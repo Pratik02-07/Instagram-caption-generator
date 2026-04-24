@@ -1,6 +1,6 @@
 # Image Caption Generator
 
-Generate short, intentional Instagram captions from any image using BLIP for visual understanding and OpenRouter for caption generation.
+Generate short, intentional Instagram captions from any image using a GenAI pipeline built with BLIP for visual understanding caption generation.
 
 [![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/-Streamlit-FF4B4B)](https://streamlit.io/)
@@ -8,19 +8,20 @@ Generate short, intentional Instagram captions from any image using BLIP for vis
 
 ## Overview
 
-This project turns a single uploaded image into 5 caption options.
+This project turns a single uploaded image into 5 caption options using generative AI.
 
 Pipeline:
 
 1. BLIP creates a base scene caption from the image.
 2. A prompt engine adds tone, style, and content type.
-3. OpenRouter generates 5 caption variations.
-4. You pick the best caption in the Streamlit UI.
+3. LLMs generate 5 caption variations.
+4. You can pick the best caption in the Streamlit UI.
 
-The app is designed for Instagram-style captions that feel human, compact, and context-aware.
+The app is designed for Instagram-style captions that feel human, compact, and context-aware while showing how GenAI can turn image understanding into useful social content.
 
 ## Features
 
+- End-to-end generative AI workflow for image-to-caption creation
 - Image understanding with `Salesforce/blip-image-captioning-base`
 - Caption type options: Aesthetic, Romantic, Savage, Deep, Funny
 - Content type options: Instagram Post
@@ -29,34 +30,6 @@ The app is designed for Instagram-style captions that feel human, compact, and c
 - Environment-variable or `.env` based API key loading
 - Free-model fallback support for OpenRouter
 
-## Demo
-
-If you have a deployed version of the app, place the link here.
-
-Example UI preview:
-
-![Caption Generator Demo](resource/demo.gif)
-
-## Caption Generation Flow
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Streamlit
-    participant BLIP
-    participant OpenRouter
-
-    User->>Streamlit: Upload image and select settings
-    Streamlit->>BLIP: Generate base caption
-    BLIP-->>Streamlit: Base caption text
-    Streamlit->>OpenRouter: Send prompt with mood + base caption
-    OpenRouter-->>Streamlit: Caption option 1
-    Streamlit->>OpenRouter: Send next variation prompt
-    OpenRouter-->>Streamlit: Caption option 2
-    Streamlit->>OpenRouter: Repeat until 5 captions
-    Streamlit-->>User: Show caption list and selected caption box
-```
-
 ---
 
 ## How It Works
@@ -64,7 +37,7 @@ sequenceDiagram
 1. Upload an image.
 2. BLIP generates a base caption.
 3. The app combines that caption with the chosen mood and platform.
-4. OpenRouter returns 5 short caption options.
+4. 5 short caption options.
 5. You select the best one and it is shown in the caption box.
 
 ## Project Structure
